@@ -18,7 +18,7 @@ The goal of this assignment is to design a robust database schema for an e-comme
 
 - Identify all entities (tables) and their respective attributes.
 - Define relationships, primary keys, foreign keys, and constraints.
-- Tools used: `Lucidchart`, `dbdiagram.io`, or `MySQL Workbench`.
+- Tools used: `Lucidchart`, `dbdiagram.io`, and `MySQL Workbench`.
 
 ### 2️⃣ Plan the Data Flow 🔄
 
