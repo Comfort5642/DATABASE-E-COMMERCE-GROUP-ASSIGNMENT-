@@ -1,6 +1,6 @@
--- create database ecommercedb;
--- use ecommercedb;
-/*
+create database ecommercedb;
+use ecommercedb;
+
 -- 1. Brand
 CREATE TABLE brand (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -112,8 +112,9 @@ CREATE TABLE product_item (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_variation_id) REFERENCES product_variation(id)
 );
-*/
-/*
+
+
+
 -- Adding Product Data 
 
 -- Insert Brands
@@ -160,8 +161,8 @@ VALUES
 (2, 30, 19.99),
 (3, 40, 19.99),
 (4, 25, 19.99);
-*/
-/*
+
+
 -- More Product Data
 
 -- Brands
@@ -265,9 +266,9 @@ INSERT INTO product_item (product_variation_id, stock_quantity, price) VALUES
 (12, 9, 45.00),
 (13, 7, 45.00),
 (14, 6, 200.00);
-*/
- /*
- -- Add customers and orders tables
+
+
+-- Add customers and orders tables
 CREATE TABLE customers (
     id INT PRIMARY KEY,
     first_name VARCHAR(255),
@@ -290,13 +291,14 @@ CREATE TABLE orders (
     delivery_instructions TEXT,
     FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
-*/
-/*
+
+
 -- Update product table to include number of items in stock 
 ALTER TABLE product
 ADD COLUMN stock_quantity INT DEFAULT 0;  -- Default to 0, can be updated as inventory changes
-*/
-/*
+
+
+
 -- Adding Product images 
 -- Sneakers
 INSERT INTO product_image (product_id, image_url, alt_text, is_primary) VALUES
@@ -337,8 +339,8 @@ INSERT INTO product_image (product_id, image_url, alt_text, is_primary) VALUES
 INSERT INTO product_image (product_id, image_url, alt_text, is_primary) VALUES
 (8, 'https://images.pexels.com/photos/789012/pexels-photo-789012.jpeg', 'Stylish trench coat for women', TRUE),
 (8, 'https://images.pexels.com/photos/890123/pexels-photo-890123.jpeg', 'Trench coat with belt detail', FALSE);
-*/
-/*
+
+
 -- Add number of items in stock
 UPDATE product SET stock_quantity = 50 WHERE id = 1;  -- Sneakers
 UPDATE product SET stock_quantity = 30 WHERE id = 2;  -- Heels
@@ -348,4 +350,3 @@ UPDATE product SET stock_quantity = 45 WHERE id = 5;  -- Ladies Jeans
 UPDATE product SET stock_quantity = 55 WHERE id = 6;  -- Men's Jeans
 UPDATE product SET stock_quantity = 70 WHERE id = 7;  -- Ankara Tops
 UPDATE product SET stock_quantity = 25 WHERE id = 8;  -- Trench Coats
-*/
