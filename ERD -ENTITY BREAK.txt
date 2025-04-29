@@ -1,0 +1,118 @@
+1. brand
+brand_id (PK, INT, AUTO_INCREMENT)
+
+name (VARCHAR, UNIQUE, NOT NULL)
+
+description (TEXT)
+
+logo_url (VARCHAR)
+
+2. product_category
+category_id (PK, INT, AUTO_INCREMENT)
+
+name (VARCHAR, UNIQUE, NOT NULL)
+
+description (TEXT)
+
+3. color
+color_id (PK, INT, AUTO_INCREMENT)
+
+name (VARCHAR, NOT NULL)
+
+hex_value (CHAR(7), e.g., #FF0000)
+
+4. size_category
+size_category_id (PK, INT, AUTO_INCREMENT)
+
+name (VARCHAR, NOT NULL)
+
+5. size_option
+size_option_id (PK, INT, AUTO_INCREMENT)
+
+size_category_id (FK → size_category.size_category_id, NOT NULL)
+
+size_value (VARCHAR, e.g., "M", "42")
+
+6. attribute_category
+attribute_category_id (PK, INT, AUTO_INCREMENT)
+
+name (VARCHAR, e.g., Physical, Technical)
+
+7. attribute_type
+attribute_type_id (PK, INT, AUTO_INCREMENT)
+
+name (VARCHAR, e.g., text, number, boolean)
+
+8. product
+product_id (PK, INT, AUTO_INCREMENT)
+
+brand_id (FK → brand.brand_id, NOT NULL)
+
+category_id (FK → product_category.category_id, NOT NULL)
+
+name (VARCHAR, NOT NULL)
+
+description (TEXT)
+
+base_price (DECIMAL(10,2), NOT NULL)
+
+9. product_image
+product_image_id (PK, INT, AUTO_INCREMENT)
+
+product_id (FK → product.product_id, NOT NULL)
+
+image_url (VARCHAR, NOT NULL)
+
+10. product_variation
+variation_id (PK, INT, AUTO_INCREMENT)
+
+product_id (FK → product.product_id, NOT NULL)
+
+color_id (FK → color.color_id, NOT NULL)
+
+size_option_id (FK → size_option.size_option_id, NOT NULL)
+
+sku_code (VARCHAR, UNIQUE, NOT NULL)
+
+11. product_item
+product_item_id (PK, INT, AUTO_INCREMENT)
+
+variation_id (FK → product_variation.variation_id, NOT NULL)
+
+stock_quantity (INT, DEFAULT 0)
+
+price (DECIMAL(10,2), NOT NULL)
+
+12. product_attribute
+product_attribute_id (PK, INT, AUTO_INCREMENT)
+
+product_id (FK → product.product_id, NOT NULL)
+
+attribute_category_id (FK → attribute_category.attribute_category_id, NOT NULL)
+
+attribute_type_id (FK → attribute_type.attribute_type_id, NOT NULL)
+
+attribute_name (VARCHAR, NOT NULL)
+
+attribute_value (TEXT)
+
+🔗 RELATIONSHIPS
+brand 1 ────< product
+
+product_category 1 ────< product
+
+product 1 ────< product_image
+
+product 1 ────< product_variation
+
+product_variation 1 ────< product_item
+
+size_category 1 ────< size_option
+
+color 1 ────< product_variation
+
+product 1 ────< product_attribute
+
+attribute_category 1 ────< product_attribute
+
+attribute_type 1 ────< product_attribute
